@@ -70,7 +70,3 @@ postgres://tracker:tracker@postgres:5432/tracker`
 ## Stay in touch
 
 - Author - [John Angelo Barot](https://angelobarot.com)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
