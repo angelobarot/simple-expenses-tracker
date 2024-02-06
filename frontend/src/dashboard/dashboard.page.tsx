@@ -76,7 +76,9 @@ export function DashboardPage() {
             alignItems: "center",
           }}
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{
+            minWidth: 0
+          }}>
             <ArrowUpwardIcon />
           </ListItemIcon>
           {`${percentage}% above average`}
@@ -90,7 +92,9 @@ export function DashboardPage() {
             alignItems: "center",
           }}
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{
+            minWidth: 0
+          }}>
             <ArrowDownwardIcon />
           </ListItemIcon>
           {`${Math.abs(percentage)}% below average`}
