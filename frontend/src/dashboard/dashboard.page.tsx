@@ -27,6 +27,7 @@ export function DashboardPage() {
 
   useEffect(() => {
     getAverageExpensesQuery.refetch();
+    getAverageExpensesPerWeekQuery.refetch()
   }, [selectedUser]);
 
   const average = getAverageExpensesQuery?.data?.reduce(
