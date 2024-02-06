@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: tracker_db
+    environment:
+      POSTGRES_USER: tracker
+      POSTGRES_PASSWORD: tracker
+      POSTGRES_DB: tracker
+      TZ: Asia/Manila
+    ports:
+      - "5432:5432"
+    networks:
+      - tracker_network
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+  nestjs:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nestjs
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/backend
+    networks:
+      - tracker_network
+    depends_on:
+      - postgres
+
+  react:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: react
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+    networks:
+      - tracker_network
+
+networks:
+  tracker_network:
+    driver: bridge
