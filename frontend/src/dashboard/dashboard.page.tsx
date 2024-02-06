@@ -32,6 +32,8 @@ export function DashboardPage() {
 
   const average = getAverageExpensesQuery?.data?.reduce(
     (acc, { type, amount }: { type: ExpenseType; amount: number }) => {
+      if (!type) return acc
+
       acc[type] = Number(amount.toFixed(2));
 
       return acc;
@@ -45,6 +47,8 @@ export function DashboardPage() {
 
   const averagePerWeek = getAverageExpensesPerWeekQuery?.data?.reduce(
     (acc, { type, amount }: { type: ExpenseType; amount: number }) => {
+      if (!type) return acc
+
       acc[type] = Number(amount.toFixed(2));
 
       return acc;
@@ -61,10 +65,12 @@ export function DashboardPage() {
     averageAmountPerWeek: number
   ) => {
     if (averageAmountPerWeek === 0) return;
+
+    const percentage = averageAmount && averageAmountPerWeek ? Number(
       (((averageAmountPerWeek - averageAmount) / averageAmount) * 100).toFixed(
         2
       )
-    );
+    ) : 0;
 
     if (percentage === 0) return
 
@@ -162,7 +168,7 @@ export function DashboardPage() {
                 <span>Coffee</span>
               </Box>
               <Box>
-                ${average?.coffee} / week
+                ${averagePerWeek?.coffee} / week
                 <br />
                 {getDifferenceByPercentage(
                   average?.coffee || 0,
@@ -193,7 +199,7 @@ export function DashboardPage() {
                 <span>Food</span>
               </Box>
               <Box>
-                ${average?.food} / week
+                ${averagePerWeek?.food} / week
                 <br />
                 {getDifferenceByPercentage(
                   average?.food || 0,
@@ -224,7 +230,7 @@ export function DashboardPage() {
                 <span>Alcohol</span>
               </Box>
               <Box>
-                ${average?.alcohol} / week
+                ${averagePerWeek?.alcohol} / week
                 <br />
                 {getDifferenceByPercentage(
                   average?.alcohol || 0,
