@@ -59,8 +59,7 @@ export function DashboardPage() {
     averageAmount: number,
     averageAmountPerWeek: number
   ) => {
-    if (averageAmount === 0 && averageAmountPerWeek === 0) return;
-    const percentage = Number(
+    if (averageAmountPerWeek === 0) return;
       (((averageAmountPerWeek - averageAmount) / averageAmount) * 100).toFixed(
         2
       )
