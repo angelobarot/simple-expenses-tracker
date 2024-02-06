@@ -10,6 +10,8 @@ Simple Expenses Tracker
 - ts-node
 ```
 
+Create `database` folder in root
+
 ## Running the app
 
 ```bash
