@@ -10,6 +10,8 @@ Simple Expenses Tracker
 - ts-node
 ```
 
+Create `database` folder in root
+
 ## Running the app
 
 ```bash
@@ -70,7 +72,3 @@ postgres://tracker:tracker@postgres:5432/tracker`
 ## Stay in touch
 
 - Author - [John Angelo Barot](https://angelobarot.com)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
